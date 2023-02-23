@@ -15,7 +15,7 @@ function compInput()
         return 'scissors'}
     
     };
-
+let reporter = document.querySelector(".reporter");
 function compare(player)
 {
     playerInput=player;
@@ -25,17 +25,20 @@ function compare(player)
     {
        compWins++;
        cinject.innerHTML="comp :- "+compWins;
+       reporter.innerHTML=`you picked ${playerInput} and the computer picked ${computerSelection} so the computer wins the round.`;
 
     }
     else if(computerSelection=='paper' && playerInput=='rock')
     {
         compWins++;
         cinject.innerHTML="comp :- "+compWins;;
+        reporter.innerHTML=`you picked ${playerInput} and the computer picked ${computerSelection} so the computer wins the round.`;
     }
     else if(computerSelection=='scissors' && playerInput=='paper')
     {
         compWins++;
-        cinject.innerHTML="comp :- "+compWins;;
+        cinject.innerHTML="comp :- "+compWins;
+        reporter.innerHTML=`you picked ${playerInput} and the computer picked ${computerSelection} so the computer wins the round.`;
     }
 
     //the possible ways the user can win
@@ -43,16 +46,23 @@ function compare(player)
     {
       userWins++;
       hinject.innerHTML='human :-'+ userWins;
+      reporter.innerHTML=`you picked ${playerInput} and the computer picked ${computerSelection} so you win this round`;
     }
     else if(playerInput=='paper'&& computerSelection=='rock')
     {
        userWins++;
        hinject.innerHTML='human :-'+ userWins;
+       reporter.innerHTML=`you picked ${playerInput} and the computer picked ${computerSelection} so you win this round`;
     }
     else if(playerInput=='scissors'&& computerSelection=='paper')
     {
        userWins++;
        hinject.innerHTML='human :-'+ userWins;
+       reporter.innerHTML=`you picked ${playerInput} and the computer picked ${computerSelection} so you win this round`;
+    }
+
+    if(playerInput==computerSelection){
+        reporter.innerHTML=`you choose ${playerInput} and the computer picked ${computerSelection} , so its a tie`
     }
 }    
 
@@ -69,7 +79,12 @@ function compare(player)
 //function btb(){compare(bt2.classList)};
 //function btc(){compare(bt3.classList)};
 
+let buttons=document.querySelectorAll('button');
 let finalscore=document.querySelector(".finalScore");
+buttons.forEach(button => {
+activator(button)
+    
+});
 function activator(value){
 value.addEventListener('click',e =>{ 
     if(userWins>4&&userWins>compWins)
@@ -80,10 +95,9 @@ value.addEventListener('click',e =>{
         finalscore.innerHTML="you lose sucker!!!"
     }else
      compare(e.target.classList)
-    });
-}
-let buttons=document.querySelectorAll('button');
-buttons.forEach(button => {
-     activator(button) 
-});
+    })
+};
+
+
+
 
