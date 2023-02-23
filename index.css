@@ -1,0 +1,47 @@
+.parent{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    color: black;
+    flex: 1;
+    flex-wrap: wrap;
+}
+.playstation{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.playerSide{
+    display: flex;
+    flex-direction: column;
+}
+.playerTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+    gap: 15px;
+}
+.scoreStation{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.scorePart{
+    display: flex;
+    gap: 50px;
+}
+.humanScore{
+    display: flex;
+    gap: 20px;
+}
+.computerSide{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,13 +1,10 @@
-//how im gonna keep score
-let userWins=0;
+let compchoice=document.querySelector('.compChoice');
+let hinject=document.querySelector('.hScoreInject');
+if(hinject==null){console.log(null)};
+let cinject=document.querySelector('.CscoreInject');
 let compWins=0;
-
-
-for(let i=0;i<5;i++){
-    let playerInput=prompt("rock,paper or scissor?");
-     playerInput=playerInput.toLowerCase();
-
-    function compInput()
+let userWins=0;
+function compInput()
     {
        let a = Math.floor(Math.random() * 10) ;
          if(a<=3){return 'rock'}
@@ -17,74 +14,76 @@ for(let i=0;i<5;i++){
          else {
         return 'scissors'}
     
-    }
+    };
 
-
-
-     let computerSelection =compInput();
-
-
-
-    console.log(`player picks ${playerInput}`)
-    console.log(`computer picks ${computerSelection}`)
-
-//how im gonna comapre them
-
-
-
-//Incase of a draw check for that first
-     if(playerInput==computerSelection)
-     {
-        console.log('draw');
-     }
-
-    //the possible ways the computer can win
-     if(computerSelection=='rock' && playerInput=='scissors')
+function compare(player)
+{
+    playerInput=player;
+    computerSelection=compInput();
+    compchoice.innerHTML= 'ill go with '+computerSelection;
+    if(computerSelection=='rock' && playerInput=='scissors')
     {
-       compWins++
-      console.log('computer wins round')
+       compWins++;
+       cinject.innerHTML="comp :- "+compWins;
+
     }
     else if(computerSelection=='paper' && playerInput=='rock')
     {
-        compWins++
-        console.log('computer wins round')
+        compWins++;
+        cinject.innerHTML="comp :- "+compWins;;
     }
     else if(computerSelection=='scissors' && playerInput=='paper')
     {
-        compWins++
-        console.log('computer wins round')
+        compWins++;
+        cinject.innerHTML="comp :- "+compWins;;
     }
 
     //the possible ways the user can win
     if(playerInput=='rock'&& computerSelection=='scissors')
     {
-      userWins++
-      console.log("player wins round")
+      userWins++;
+      hinject.innerHTML='human :-'+ userWins;
     }
     else if(playerInput=='paper'&& computerSelection=='rock')
     {
-       userWins++
-       console.log("player wins round")
+       userWins++;
+       hinject.innerHTML='human :-'+ userWins;
     }
     else if(playerInput=='scissors'&& computerSelection=='paper')
     {
-       userWins++
-       console.log("player wins round")
+       userWins++;
+       hinject.innerHTML='human :-'+ userWins;
     }
+}    
 
-    console.log(`player score -${userWins}`);
-    console.log(`computer score -${compWins}`);
+//let bt1=document.querySelector('.rock');
+//let bt2=document.querySelector('.paper');
+//let bt3=document.querySelector('.scissors');
+
+//bt1.addEventListener('click',bta);
+//bt2.addEventListener('click',btb);
+//bt3.addEventListener('click',btc);
 
 
-    
+//function bta(){compare(bt1.classList)};
+//function btb(){compare(bt2.classList)};
+//function btc(){compare(bt3.classList)};
+
+let finalscore=document.querySelector(".finalScore");
+function activator(value){
+value.addEventListener('click',e =>{ 
+    if(userWins>4&&userWins>compWins)
+    {
+        finalscore.innerHTML="YOU WIN CONGRATES";
+    } 
+    else if(compWins>4&&compWins>userWins){
+        finalscore.innerHTML="you lose sucker!!!"
+    }else
+     compare(e.target.classList)
+    });
 }
+let buttons=document.querySelectorAll('button');
+buttons.forEach(button => {
+     activator(button) 
+});
 
-if (userWins>compWins)
-{console.log(`congrats!!!! you win`)}
-if(userWins<compWins)
-{
-    console.log(`you lost ! try again by reloading browser.`)
-}
-else{
-    console.log("you drew reload browser and try again")
-}
